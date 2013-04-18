@@ -1,0 +1,10 @@
+#! ../shebang --cmd dbaccess --checkargs 2 --usage 'test1 dbname unl'
+
+database $1;
+load from $2
+	insert into test;
+
+
+
+
+

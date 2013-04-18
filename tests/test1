@@ -1,0 +1,5 @@
+#! ./shebang ./mycmd -A -c="this is an argument with spaces" -b -e @!
+Hello $1
+
+
+

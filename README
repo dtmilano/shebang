@@ -1,0 +1,96 @@
+shebang 0.3
+~~~~~~~~~~~
+
+From the Jargon Dictionary:
+http://info.astrian.net/jargon/terms/s/shebang.html
+
+shebang     /sh*-bang/ n.
+The character sequence "#!" that frequently begins executable shell scripts
+under Unix. Probably derived from "shell bang" under the influence of American
+slang "the whole shebang" (everything, the works).
+
+
+
+
+Shebang permits that programs that accept scripts but don't allow '#' as a
+comment, be used with shebang (#!) interpreter method of execution.
+This is because the entire script is passed to the interpreter untouched,
+including the first (shebang) line. If '#' is not understood as a comment,
+probably you get a 'syntax error' from the interpreter.
+
+
+Now you can write scripts that will be executed by those programs with no
+conflict.
+
+examples
+~~~~~~~~
+#! /usr/local/bin/shebang --cmd cat
+Hello $1
+
+
+Save this a test1.
+This trivial example shows the shebang use.
+Running 'test1' you will get 'Hello' and running 'test1 Donald'
+'Hello Donald'.
+
+
+#! /usr/local/bin/shebang --cmd 'cat /etc/HOSTNAME -' --checkargs 1 --usage "test2 name"
+Hello $1
+
+saving this script as 'test2' and invoking
+
+$ test2 Donald
+
+the output will be
+
+zebra.in3.arg
+Hello Donald
+
+this was a trivial example only to show the syntax.
+You can find more interesting ones in the tests directory of this distribution.
+
+informix dbaccess
+~~~~~~~~~~~~~~~~~
+dbaccess is one of those programs that cannot be used in scripts, as the
+interpreter because '#' is not a valid comment character in Informix SQL.
+If you try this (don't forget to change INFORMIXDIR value):
+
+#! /opt/informix-9.20IIF/bin/dbaccess sysmaster
+select tabid,tabname from systables;
+
+you will receive this error
+
+
+Database selected.
+
+
+  802: Cannot open file for run.
+
+Database closed.
+
+that's because dbaccess cannot be used in that way.
+But if you replace the first line to (the "'" are very important)
+
+#! /usr/local/bin/shebang --cmd '/opt/informix-9.20IIF/bin/dbaccess sysmaster'
+select tabid,tabname from systables;
+
+
+this output will be generated
+
+
+Database selected.
+
+
+
+
+tabid    1
+tabname  systables
+
+tabid    2
+tabname  syscolumns
+
+[...]
+
+
+This is the method to write SQL scripts.
+

@@ -1,0 +1,6 @@
+#! ../shebang --cmd 'dbaccess' --checkargs 2 --usage 'test5 dbname name'
+
+database $1;
+execute procedure test("$2");
+
+

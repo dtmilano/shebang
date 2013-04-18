@@ -1,0 +1,27 @@
+#! ../../shebang --cmd dbaccess --checkargs 1 --usage 'createtest dbname'
+
+database $1;
+create table test
+  (
+    i serial not null ,
+    c char(20)
+  );
+revoke all on test from "public";
+
+
+create procedure test(lc varchar(20))
+	returning int, char(20);
+
+	define vi like test.i;
+	define vc like test.c;
+
+	foreach select *
+			into vi,vc
+			from test
+			where c like lc
+		
+		return vi,vc with resume;
+	end foreach;
+end procedure
+
+

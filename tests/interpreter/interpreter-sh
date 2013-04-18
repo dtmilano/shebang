@@ -1,0 +1,13 @@
+#! /verdura/bin/ksh -p
+# This probes that:
+# 1) the interpreter of the interpreter (shebang) doesn't matter
+# 2) this is never executed
+print "This is interpreter:"
+print "\targs: $@"
+print "\tstdin:"
+
+while read line
+do
+	print $line
+done
+print

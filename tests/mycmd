@@ -1,0 +1,14 @@
+#! /bin/bash
+
+echo '~~~~~~~~~~'
+echo ' ~ mycmd ~'
+echo '~~~~~~~~~~'
+set +x
+echo "\$0=$0"
+if [[ $# > 0 ]]
+then
+    for i in $(seq 1 $#)
+    do
+        eval echo "$i: \$$i"
+    done
+fi

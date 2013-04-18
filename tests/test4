@@ -1,0 +1,5 @@
+#! ./shebang -k 3 ./mycmd @!
+Hello $1
+
+
+

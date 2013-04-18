@@ -1,0 +1,6 @@
+#! ../shebang --cmd 'dbaccess' --usage 'test6 [dbname [name]]'
+
+database ${1-testdb};
+execute procedure test('`grep "${2-4}" expr.txt| cut -f2`');
+
+

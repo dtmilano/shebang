@@ -1,0 +1,9 @@
+#! ../shebang --cmd dbaccess --checkargs 1 --usage 'test2 dbname'
+
+database $1;
+select * from test;
+
+
+
+
+

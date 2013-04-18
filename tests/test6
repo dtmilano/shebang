@@ -1,0 +1,5 @@
+#! ./shebang -k 3 ./mycmd $LANG @!
+Hello $1
+
+
+

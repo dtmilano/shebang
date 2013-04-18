@@ -1,0 +1,35 @@
+shebang
+~~~~~~~
+
+INFORMIX DBACCESS TESTS
+This tests use a database named testdb, but you can call it whatever you want.
+
+CREATETEST
+Creates a table 'test' and a procedure 'test' in the database you specify as
+an argument.
+
+TEST1
+Loads the table in the database from the specified unload file. You can use
+'test.unl' as the unload file.
+
+TEST2
+Select rows loaded.
+
+TEST3
+Selects rows matching the criteria specified as argument.
+
+TEST4
+Selects rows. Now the database is specified in a shebang arg. If you haven't
+use 'testdb' edit the script.
+
+TEST5
+Executes a procedure passing args.
+
+TEST6
+Executes a procedure passing args. But also show how interesting things could be
+done due to full shell expressions.
+
+TEST7
+Same as test4 but shows the short args.
+
+

@@ -1,0 +1,7 @@
+#! ./interpreter-c
+# This demonstrates:
+# 1) if the interpreter is not an "real" executable then it's ignored
+# 2) and the script is run through $SHELL blindly
+
+#This is test2
+ps -u diego x --forest

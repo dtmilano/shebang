@@ -1,0 +1,7 @@
+#! ../shebang -c 'dbaccess testdb' -k 0 -u 'test7'
+-- like test4 with short options
+
+select * from test
+	where c like "cau%";
+
+

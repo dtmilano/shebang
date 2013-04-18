@@ -1,0 +1,3 @@
+#! /bin/cat -b /etc/hosts
+** The content of this file should be printed after the content of /etc/hosts **
+This is a sample.

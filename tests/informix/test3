@@ -1,0 +1,10 @@
+#! ../shebang --cmd dbaccess --checkargs 2 --usage 'test3 dbname name'
+
+database $1;
+select * from test
+	where c like "$2";
+
+
+
+
+

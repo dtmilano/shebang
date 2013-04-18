@@ -1,0 +1,9 @@
+#! ../shebang --cmd 'dbaccess testdb' --checkargs 0 --usage 'test4'
+
+select * from test
+	where c like "cau%";
+
+
+
+
+
