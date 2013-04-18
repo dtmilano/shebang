@@ -19,3 +19,15 @@
 # Other
 .deps
 *.cache
+*~
+
+# Automake
+Makefile
+config.h
+config.log
+config.status
+depcomp
+install-sh
+missing
+shebang
+stamp-h1
