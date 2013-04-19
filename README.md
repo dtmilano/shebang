@@ -9,7 +9,7 @@ shebang
 > under Unix. Probably derived from "shell bang" under the influence of American
 > slang "the whole shebang" (everything, the works).
 
-**Shebang** extends the standard functionality found on Linux, Mac OSX and Windows Cygwin allowing for cases that would
+**Shebang** extends the standard shebang line functionality found on Linux, Mac OSX and Windows Cygwin allowing for cases that would
 be otherwise impossible.
 
 Introduction
