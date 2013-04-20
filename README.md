@@ -24,7 +24,7 @@ For this to happen, the original script requires the **execute** attribute be se
 ### Examples ###
 One of the most common uses is to run shell scripts.
 
-```shell
+```bash
 #! /bin/bash
 echo "Hello World!"
 ```
