@@ -68,7 +68,7 @@ kind is performed.
 
 Regarding arguments provided in _interpreter_ command lines is not well defined how they would be treated.
 Different Unix-like systems treat them in different ways and sometimes the _interpreter_ is invoked with a single argument 
-concatenating all the arguments provided in the original shebang command line.
+concatenating all the arguments provided in the original shebang command line (see [Results](http://www.in-ulm.de/~mascheck/various/shebang/#results)).
 
 Extensions
 ----------
