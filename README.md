@@ -30,10 +30,16 @@ echo "Hello World!"
 ```
 
 This may allow you to execute the scripts with a different shell than your login shell.
+
 You may wonder why somebody would like to do something like this.
 After all, is there any other shell than bash?
-Certainly, there are, even though bash is almost everywhere. If you are interested in some historical facts related with Unix shells taka a look at [superuser: why is bash everywhere...](http://superuser.com/questions/61727/why-is-bash-everywhere-in-most-if-not-all-linux-distributions).
-To cut this story short, in ancient times, you may have had `csh` as your login shell because of features like history and job control but you still wrote your scripts in `sh`. In such cases, the **shebang** line came very handy.
+
+Certainly, there are, even though bash is almost everywhere. If you are interested in some historical facts related with
+Unix shells taka a look at
+[superuser: why is bash everywhere...](http://superuser.com/questions/61727/why-is-bash-everywhere-in-most-if-not-all-linux-distributions).
+
+To cut this story short, in ancient times, you may have had `csh` as your login shell because of features like history
+and job control but you still wrote your scripts in `sh`. In such cases, the **shebang** line came very handy.
 
 There are other cases indeed, not related to login shell, for example to execute scripts that are programmed in a different language than the shell
 
@@ -60,6 +66,10 @@ Well, if the _interpreter_ does not support it as a comments you will receive a 
 Another limitation is that the **shebang** line is passed verbatim to the _interpreter_, no variable expansion of any
 kind is performed.
 
+Regarding arguments provided in _interpreter_ command lines is not well defined how they would be treated.
+Different Unix-like systems treat them in different ways and sometimes the _interpreter_ is invoked with a single argument 
+concatenating all the arguments provided in the original shebang command line.
+
 Extensions
 ----------
 
@@ -74,3 +84,9 @@ Now you can write scripts that will be executed by those programs with no
 conflict.
 
 
+Resources
+=========
+* http://en.wikipedia.org/wiki/Shebang_(Unix)
+* http://www.in-ulm.de/~mascheck/various/shebang/
+* http://superuser.com/questions/61727/why-is-bash-everywhere-in-most-if-not-all-linux-distributions
+* http://stackoverflow.com/questions/12910744/why-should-the-shebang-line-always-be-the-first-line
