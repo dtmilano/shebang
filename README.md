@@ -9,7 +9,9 @@ shebang
 > under Unix. Probably derived from "shell bang" under the influence of American
 > slang "the whole shebang" (everything, the works).
 
-**Shebang** extends the standard shebang line functionality found on Linux, Mac OSX and Windows Cygwin allowing for cases that would
+This is the resurrection of an old project (circa 2002).
+
+**Shebang** extends the standard shebang line functionality found on Linux, Mac OSX and Windows Cygwin allowing for use cases that would
 be otherwise impossible.
 
 Introduction
@@ -64,11 +66,13 @@ But, what if the _interpreter_ does not support **`#`** as a comment?
 Well, if the _interpreter_ does not support it as a comments you will receive a **syntax error**.
 
 Another limitation is that the **shebang** line is passed verbatim to the _interpreter_, no variable expansion of any
-kind is performed.
+kind is performed. In this respect **shebang**, this ustility, helps by providing some basic variable expansion feature.
 
 Regarding arguments provided in _interpreter_ command lines is not well defined how they would be treated.
 Different Unix-like systems treat them in different ways and sometimes the _interpreter_ is invoked with a single argument 
 concatenating all the arguments provided in the original shebang command line (see [Results](http://www.in-ulm.de/~mascheck/various/shebang/#results)).
+
+This **shebang** utility also tries to unify shebang and command line arguments treatment across different platforms.
 
 Extensions
 ----------
