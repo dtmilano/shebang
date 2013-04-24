@@ -93,7 +93,7 @@ int str2argv(const char* str, int* argc, char* argv[], char** cmd, int* gnabehs)
 
 	if ( strpbrk(str, delim) ) {
 		#ifndef NDEBUG
-			fprintf(stderr, "str2argv: str='%s' contains delimiters\n", str);
+			fprintf(stderr, "str2argv: str='%s' contains delimiters in '%s'\n", str, delim);
 		#endif
 
 		strcpy(_str, str);
@@ -120,14 +120,32 @@ int str2argv(const char* str, int* argc, char* argv[], char** cmd, int* gnabehs)
             }
 
             char* var = NULL;
+            char buf[MAXBUFSIZE] = { '\0' };
             /* the '$' can be in any position inside the string */
+            /* we should look for repetitions of '$', we are now only looking for first one */
             if ((var = strchr(_tok, '$')) != NULL) {
+                #ifndef NDEBUG
+                    fprintf(stderr, "str2argv: _tok='%s' contains '$' at var='%s'\n", _tok, var);
+                #endif
+                char* duptok = strdup(_tok);
+                if (var != _tok) {
+                    int offset = (var-_tok);
+                    #ifndef NDEBUG
+                        fprintf(stderr, "str2argv: duptok='%s' var-_tok-1=%ld\n", duptok, offset);
+                    #endif
+                    duptok[offset] = '\0';
+                    #ifndef NDEBUG
+                        fprintf(stderr, "str2argv: duptok='%s'\n", duptok);
+                    #endif
+                    strcat(buf, duptok);
+                }
                 char varname[MAXBUFSIZE];
                 var++;
                 char* varend;
                 int v;
                 for (varend=var, v=0; *varend; varend++, v++) {
                     char c = *varend;
+                    /* we are supporting letters (uppercase and lowercase), numbers and '_' as variable names */
                     if (c != '_' && (c < '0' || c > '9') && (c < 'A' || c > 'Z') && (c < 'a' || c > 'z')) {
                         break;
                     }
@@ -138,16 +156,15 @@ int str2argv(const char* str, int* argc, char* argv[], char** cmd, int* gnabehs)
                     fprintf(stderr, "str2argv: variable='%s'\n", varname);
                     fprintf(stderr, "str2argv: varend='%s'\n", varend);
                 #endif
-                char buf[MAXBUFSIZE] = { '\0' };
                 char* val = getenv(varname);
                 #ifndef NDEBUG
-                    fprintf(stderr, "str2argv: getenv val=%s\n", val);
+                    fprintf(stderr, "str2argv: getenv val='%s'\n", val);
                 #endif
                 if (val != NULL) {
-                    strcpy(buf, val);
+                    strcat(buf, val);
                 }
                 else {
-                    fprintf(stderr, "%s: WARNING: %s not found in env\n", SHEBANGNAME, varname);
+                    fprintf(stderr, "%s: WARNING: '%s' not found in env\n", SHEBANGNAME, varname);
                 }
                 strcat(buf, varend);
                 argv[i] = strdup(buf);
