@@ -137,15 +137,27 @@ int main(int argc, char* argv[]) {
             sb_argc, sb_opt_argc, gnabehs_pos_in_argv);
 	#endif
     if (optind < sb_opt_argc) {
+        #ifndef NDEBUG
+            fprintf(stderr, "copying sb_opt_argv[%d] to sb_cmd\n", optind);
+            fprintf(stderr, "    %s\n", sb_opt_argv[optind]);
+        #endif
 		strcpy(sb_cmd, sb_opt_argv[optind]);
 		for (i=optind+1; i < sb_opt_argc; i++) {
+            #ifndef NDEBUG
+                fprintf(stderr, "concatenating i=%d\n", i);
+            #endif
             strncat(sb_cmd, WSTR, 1);
 			strncat(sb_cmd, sb_opt_argv[i], sizeof(buf));
 		}
 
-        sb_input = argv[gnabehs_pos_in_argv+1];
-        strncat(sb_cmd, WSTR, 1);
-        strncat(sb_cmd, sb_input, sizeof(buf));
+        if (argc > gnabehs_pos_in_argv+1) {
+            sb_input = strdup(argv[gnabehs_pos_in_argv+1]);
+            strncat(sb_cmd, WSTR, 1);
+            strncat(sb_cmd, sb_input, sizeof(buf));
+        }
+        else {
+            sb_input = "";
+        }
 
         for (i=gnabehs_pos_in_argv+2; i < argc; i++) {
             strncat(sb_cmd, WSTR, 1);
